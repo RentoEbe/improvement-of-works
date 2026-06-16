@@ -5,4 +5,4 @@ x.thawing()
 x.show_log()
 print(1)
 print(2)
-
+print(3)
