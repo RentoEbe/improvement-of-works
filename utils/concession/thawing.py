@@ -1,4 +1,3 @@
-from .. import decorate_log
 from ..now_time_func import GetToday
 from ..decorate_log import log_decorator
 import math
