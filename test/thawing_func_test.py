@@ -5,7 +5,15 @@ def test_thawing():
     z = Thawing(0, 0)
     x.thawing()
     y.thawing()
+    z.thawing()
     assert (x.loaf_bags, x.sausage_bags) == (17, 10)
     assert (y.loaf_bags, y.sausage_bags) == (49, 19)
     assert (z.loaf_bags, z.sausage_bags) == (0, 0)
 
+def test_thawing2():
+    a = int("        4000")
+    b = int("        4000")
+    x = Thawing(a, b)
+    x.thawing()
+    assert x.loaf_bags == 667
+    assert x.sausage_bags == 400

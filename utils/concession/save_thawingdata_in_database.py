@@ -1,13 +1,13 @@
-# We save data of thawing in database
+# We operate the table of thawing in movixdb.db
 import sqlite3
 
-def save_data_of_thawing_in_database(date, weekday, loaf, sausage):
-    con = sqlite3.connect("../../database/movixdb.db")
+def save_data_of_thawing_in_database(db_pass, date, weekday, loaf, sausage):
+    con = sqlite3.connect(db_pass)
     cursor = con.cursor()
     create_thawing_table_query = """
     CREATE TABLE IF NOT EXISTS Thawing(date INTEGER PRIMARY KEY NOT NULL, Weekday INTEGER, Loaf INTEGER,  Sausage INTEGER);
     """
-    insert_thawing_query = "INSERT INTO Sample VALUES (?, ?, ?, ?)"
+    insert_thawing_query = "INSERT INTO Thawing VALUES (?, ?, ?, ?)"
 
 
     try:
@@ -19,5 +19,3 @@ def save_data_of_thawing_in_database(date, weekday, loaf, sausage):
     else:
         con.commit()
 
-
-save_data_of_thawing_in_database(20261023, 3, 3, 4)
