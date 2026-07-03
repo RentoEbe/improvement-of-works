@@ -1,9 +1,11 @@
 # We operate the table of thawing in movixdb.db
 import sqlite3
 
-def save_data_of_thawing_in_database(db_pass, date, weekday, loaf, sausage):
-    con = sqlite3.connect(db_pass)
-    cursor = con.cursor()
+con = sqlite3.connect("database/movixdb.db")
+cursor = con.cursor()
+
+def save_data_of_thawing_in_database(date, weekday, loaf, sausage):
+
     create_thawing_table_query = """
     CREATE TABLE IF NOT EXISTS Thawing(date INTEGER PRIMARY KEY NOT NULL, Weekday INTEGER, Loaf INTEGER,  Sausage INTEGER);
     """
@@ -14,8 +16,15 @@ def save_data_of_thawing_in_database(db_pass, date, weekday, loaf, sausage):
         cursor.execute(create_thawing_table_query)
         cursor.execute(insert_thawing_query, (date, weekday, loaf, sausage))
     except sqlite3.Error as e:
-        print("sqlite3 error occured", e)
+        print("sqlite3 error occurred", e)
         con.rollback() #commit前のpendingのsql文を無かったことにする(元の状態に戻す)
     else:
         con.commit()
 
+def show_alldata_of_thawing_in_database(db_pass, date):
+    """
+    show all data
+    :return:
+    """
+
+    pass
