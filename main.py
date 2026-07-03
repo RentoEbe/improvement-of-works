@@ -1,5 +1,5 @@
 import utils
-utils.Thawing.execution()
+utils.Thawing.execution() #解凍記録の保存をやってくれる.dbとcsvに保存する
 # x.thawing()
 # x.show_log()
 
@@ -11,3 +11,4 @@ utils.Thawing.execution()
         #データベースに値をとうろくするときは本当に登録して良いかを確認:could
         #データベースに値を登録:could
         #データベースに間違った値を登録した時の更新や消去の処理を行う関数
+        #データベースをでフィルタリングで表示したい(例えば特定の曜日のみのレコードを表示する)が、もしかしたらpandasなどで操作するべきかも

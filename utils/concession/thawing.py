@@ -3,6 +3,7 @@ from ..decorate_log import log_decorator
 import math
 from datetime import date
 from .save_thawingdata_in_database import save_data_of_thawing_in_database
+from csv_operation import csv_operation_a, csv_operation_r
 
 class Thawing:
     def __init__(self, loaf, sausage):
@@ -35,14 +36,13 @@ class Thawing:
     @classmethod
     def execution(cls):
         """
-        This executes the thawing , save_in_db ,    function.
+        This executes the thawing() , shaw_log() ,csv_operation    function.
         :return:
         """
         while True:
             today_date = date.today()
             weekday = today_date.weekday()
             int_date = int(today_date.strftime("%Y%m%d"))
-            db_pass = "database/movixdb.db"
 
             try:
                 loaf = int(input("input the number of loafs:"))
@@ -59,7 +59,10 @@ class Thawing:
                 thawing = cls(loaf, sausage)
                 thawing.thawing()
                 thawing.show_log()
-                save_data_of_thawing_in_database(db_pass, int_date, weekday, thawing.loaf, thawing.sausage)
+                save_data_of_thawing_in_database(int_date, weekday, thawing.loaf, thawing.sausage)
+                csv_operation_a(int_date, weekday, thawing.loaf, thawing.sausage)
+                csv_operation_r()
+
                 print("データベースへの登録が完了しました。")
                 break
 
